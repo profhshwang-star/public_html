@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>식당 블로그 홍보 가이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+        
+        .prompt-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .prompt-table th,
+        .prompt-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .prompt-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+            width: 150px;
+        }
+        
+        .prompt-table td {
+            background: #fafbfc;
+            transition: background-color 0.3s ease;
+        }
+        
+        .prompt-table tr:hover td {
+            background: #f1f8ff;
+        }
+        
+        .prompt-table tr:last-child th,
+        .prompt-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+        
+        .example-header {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #2c3e50;
+            padding: 15px 20px;
+            margin: -25px -25px 20px -25px;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .example-content {
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        .note {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note::before {
+            content: '💡';
+            font-size: 1.5em;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+        
+        .template-form {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+        }
+        
+        .template-form h3 {
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        
+        .form-field {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 8px 0;
+            color: white;
+            width: 100%;
+            backdrop-filter: blur(5px);
+        }
+        
+        .form-field::placeholder {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .prompt-table th,
+            .prompt-table td {
+                padding: 15px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ 식당 블로그 홍보 가이드</h1>
+            <p>생성형 AI를 활용한 효과적인 식당 홍보 콘텐츠 제작 매뉴얼</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🎯 블로그 작성 프롬프트 구성요소</h2>
+                <table class="prompt-table">
+                    <tr>
+                        <th>🎭 역할</th>
+                        <td>너는 춘천에서 <span class="highlight">[식당명]</span>을 운영하고 있는 사장님이야.</td>
+                    </tr>
+                    <tr>
+                        <th>📝 과업</th>
+                        <td>식당을 소개하는 홍보 블로그를 작성해줘.</td>
+                    </tr>
+                    <tr>
+                        <th>📖 맥락</th>
+                        <td>우리 식당은 <span class="highlight">[다른 식당과 차별점 또는 식당 소개글 작성]</span>. 식당 홍보하는 블로그 글이 필요해.</td>
+                    </tr>
+                    <tr>
+                        <th>🎨 어조</th>
+                        <td>블로그 특성에 맞게 작성해줘.</td>
+                    </tr>
+                    <tr>
+                        <th>📋 형식</th>
+                        <td>사람들이 관심 가질 만한 블로그 제목을 만들어주고, 글의 분량은 사람들이 간단하게 읽을 수 있게 써줘. 글 마지막에 기본정보 넣어주고, 기본정보의 "네이버지도 주소"는 하이퍼링크를 걸어줘. 블로그 검색이 잘 되게 해시태그도 만들어줘.</td>
+                    </tr>
+                    <tr>
+                        <th>📍 기본정보</th>
+                        <td>[식당의 주소], [영업시간], [주차가능여부], [전화번호], [찾아오시는 길(예시: 춘천역 도보 O분)], [식당의 네이버 주소]</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🚀 실행 예시</h2>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <div class="example-header">✨ CHAT GPT 결과 예시</div>
+                        <div class="example-content">
+                            🌿 춘천 XX닭갈비 — 신선한 생닭과 향긋한 깻잎이 만난 특별한 맛 🌿<br><br>
+
+                            춘천에 오면 꼭 먹어야 할 음식, 바로 닭갈비죠! 🍗<br>
+                            하지만 어디서 먹느냐에 따라 맛의 차이가 크다는 거, 다들 아시죠?<br><br>
+
+                            저희 춘천 XX닭갈비는 남들과는 다른 특별한 비밀이 있습니다.<br>
+                            바로 👉 냉동 닭이 아닌 '생닭'만 사용한다는 점!<br><br>
+
+                            쫄깃하면서도 부드러운 육질, 씹을수록 살아나는 신선함은<br>
+                            다른 곳에서 쉽게 맛보기 어렵습니다.<br><br>
+
+                            <span class="highlight">📍 기본정보</span><br>
+                            📍 주소 : 강원 춘천시 XX로 XX<br>
+                            🕘 영업시간 : 매일 11:00 ~ 22:00 (라스트오더 21:00)<br>
+                            🚗 주차 가능<br>
+                            ☎️ 전화번호 : 033-123-4567<br>
+                            🔗 네이버 지도 : 네이버 지도 바로가기<br><br>
+
+                            #춘천맛집 #춘천닭갈비 #춘천여행코스 #춘천가볼만한곳 #춘천먹거리 #생닭갈비 #깻잎닭갈비 #춘천맛집추천 #춘천핫플
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-header">🔥 Claude 결과 예시</div>
+                        <div class="example-content">
+                            🔥 춘천역 도보 5분! 현지인이 20년간 사랑한 진짜 닭갈비 맛집 🌿<br><br>
+
+                            안녕하세요! 춘천에서 닭갈비 한 길만 걸어온 사장입니다.<br>
+                            춘천 여행 오셔서 닭갈비 먹고 "어? 이게 그 유명한 춘천 닭갈비야?" 라고 실망하신 적 없으세요?<br><br>
+
+                            요즘 많은 식당들이 편의를 위해 냉동 닭을 사용하는데, 저희는 절대 그렇지 않습니다!<br>
+                            🐣 우리가 다른 이유 ① 매일 아침 받는 100% 생닭<br><br>
+
+                            절대 냉동 닭을 사용하지 않습니다! 매일 새벽에 들어오는 신선한 생닭만으로 요리해요.<br>
+                            생닭 vs 냉동 닭의 차이:<br><br>
+
+                            🥩 식감: 쫄깃하고 탄력 있는 진짜 닭고기 맛<br>
+                            🍃 풍미: 닭 본연의 깊고 진한 맛<br>
+                            🔥 양념 흡수: 부드러운 살에 매콤달콤한 양념이 쏙쏙!<br><br>
+
+                            <span class="highlight">📍 매장 상세 정보</span><br>
+                            📍 주소: 춘천시 중앙로 67번길 15<br>
+                            ☎️ 전화번호: 033-252-1234<br>
+                            🕘 영업시간: 매일 11:00 - 22:00 (브레이크타임 15:00 - 17:00 / 라스트오더 21:00)<br>
+                            🚗 주차 안내: 매장 앞 3대 가능<br>
+                            🔗 네이버 지도: "춘천 깻잎닭갈비 맛집" 또는 "중앙로 생닭갈비"로 검색<br><br>
+
+                            #춘천닭갈비 #생닭전문 #깻잎닭갈비 #춘천맛집 #춘천역맛집 #춘천현지맛집 #강원도맛집 #닭갈비맛집 #춘천토박이추천 #진짜춘천맛 #춘천여행맛집 #춘천데이트코스 #중앙시장맛집 #건강한닭갈비 #20년전통맛집
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📝 블로그 고정 프롬프트</h2>
+                <div class="template-form">
+                    <h3>🎯 사용자 맞춤 프롬프트 템플릿</h3>
+                    <div class="note">
+                        아래 템플릿을 복사하여 [ ] 안의 내용을 귀하의 식당 정보로 채워 넣어 사용하세요!
+                    </div>
+                    
+                    <table class="prompt-table" style="margin-top: 20px; background: rgba(255,255,255,0.95);">
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">🎭 역할</th>
+                            <td>너는 춘천에서 <strong>[식당명]</strong>을 운영하고 있는 사장님이야.</td>
+                        </tr>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">📝 과업</th>
+                            <td>식당을 소개하는 홍보 블로그를 작성해줘.</td>
+                        </tr>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">📖 맥락</th>
+                            <td>우리 식당은 <strong>[ 다른 식당과 차별점 또는 식당 소개글 작성 ]</strong>. 식당 홍보하는 블로그 글이 필요해.</td>
+                        </tr>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">🎨 어조</th>
+                            <td>블로그 특성에 맞게 작성해줘.</td>
+                        </tr>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">📋 형식</th>
+                            <td>사람들이 관심 가질 만한 블로그 제목을 만들어주고, 글의 분량은 사람들이 간단하게 읽을 수 있게 써줘. 글 마지막에 기본정보 넣어주고, 기본정보의 "네이버지도 주소"는 하이퍼링크를 걸어줘. 블로그 검색이 잘 되게 해시태그도 만들어줘.</td>
+                        </tr>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, #667eea, #764ba2);">📍 기본정보</th>
+                            <td>[ 식당의 주소 ], [ 영업시간 ], [ 주차가능여부 ], [ 전화번호 ], [ 찾아오시는 길(예시: 춘천역 도보 O분) ], [ 식당의 네이버 주소 ]</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>💡 활용 팁</strong><br>
+                • 차별점이나 특징을 구체적으로 작성할수록 더 매력적인 콘텐츠가 생성됩니다.<br>
+                • 지역 특색이나 고유한 스토리를 포함하면 더욱 효과적입니다.<br>
+                • 생성된 콘텐츠는 검토 후 필요에 따라 수정하여 사용하세요.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
