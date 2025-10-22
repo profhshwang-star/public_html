@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Menu</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      height: 100%;
+      overflow-y: auto;
+    }
+    .logo {
+      text-align: center;
+      padding: 20px 30px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .logo h1 { font-size: 22px; color: #333; margin-bottom: 5px; font-weight: bold; }
+    .logo p { font-size: 13px; color: #666; }
+    .menu { padding: 0 15px; }
+    .menu ul { list-style: none; }
+    .menu-item {
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .menu-item:hover {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transform: translateX(5px);
+    }
+    .level1 {
+      font-weight: bold;
+      font-size: 15px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      margin: 10px 0 5px 0;
+    }
+    .level2 { font-weight: 600; margin-left: 20px; background: rgba(102,126,234,0.1); color: #333; }
+    .level3 { margin-left: 40px; background: rgba(118,75,162,0.1); font-size: 14px; }
+    .level3:hover { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+    .submenu { display: none; animation: slideDown 0.3s ease; }
+    .active > .submenu { display: block; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a { text-decoration: none; color: inherit; display: block; }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <h1>🤖 AI 프롬프트</h1>
+    <p>소상공인을 위한 생성형 AI 가이드</p>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li>
+        <div class="menu-item level1">📝 Text-to-Text</div>
+        <ul class="submenu">
+          <li>
+            <div class="menu-item level2">📰 Blog</div>
+            <ul class="submenu">
+              <li><a class='menu-item level3' href='/content/text-to-text/blog-restaurant' target='contentFrame'>🍕 음식</a></li>
+              <li><a class='menu-item level3' href='/content/text-to-text/blog-fitness' target='contentFrame'>💪 운동</a></li>
+              <li><a class='menu-item level3' href='/content/text-to-text/blog-cafe' target='contentFrame'>☕ 카페</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="menu-item level2">📸 Instagram</div>
+            <ul class="submenu">
+              <li><a class="menu-item level3" href="contents4.html" target="contentFrame">🍕 음식</a></li>
+              <li><a class="menu-item level3" href="contents5.html" target="contentFrame">💪 운동</a></li>
+              <li><a class="menu-item level3" href="contents6.html" target="contentFrame">☕ 카페</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="menu-item level1">🎨 Text-to-Image</div>
+        <ul class="submenu">
+            <li><a class="menu-item level2" href="contents7.html" target="contentFrame">🍕 음식</a></li>
+            <li><a class="menu-item level2" href="contents8.html" target="contentFrame">💪 운동</a></li>
+            <li><a class="menu-item level2" href="contents9.html" target="contentFrame">☕ 카페</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="menu-item level1">🎬 Text-to-Video</div>
+        <ul class="submenu">
+            <li><a class="menu-item level2" href="contents13.html" target="contentFrame">🍕 음식</a></li>
+            <li><a class="menu-item level2" href="contents14.html" target="contentFrame">💪 운동</a></li>
+            <li><a class="menu-item level2" href="contents15.html" target="contentFrame">☕ 카페</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="menu-item level1" href="T2H.html" target="contentFrame">🌐 Text-to-HTML</a>
+      </li>
+
+      <li>
+        <a class='menu-item level1' href='/t2iv_prompt_guide' target='contentFrame'>📘 Image/Video Prompt Guide</a>
+      </li>
+
+      <li>
+        <a class='menu-item level1' href='/content/resources' target='contentFrame'>💾 참고자료</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // 아코디언 메뉴 기능 (level3 제외)
+    document.querySelectorAll('.menu-item').forEach(item => {
+      // 'A' 태그가 아닌 menu-item에만 클릭 이벤트 리스너를 추가하여 아코디언 기능을 활성화합니다.
+      // level1 클래스를 가진 'A' 태그는 단순 링크이므로 제외합니다.
+      if (item.tagName !== 'A' && !item.classList.contains('level3')) {
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const parent = this.parentElement;
+          const siblings = parent.parentElement.children;
+          // 다른 활성화된 메뉴를 닫습니다.
+          for (let sibling of siblings) {
+            if (sibling !== parent) {
+              sibling.classList.remove('active');
+            }
+          }
+          // 현재 클릭한 메뉴의 활성 상태를 토글합니다.
+          parent.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
